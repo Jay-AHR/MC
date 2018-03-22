@@ -1,0 +1,228 @@
+Summary of Solution:
+
+	This document describes an IoT system architecture upon which an application 
+	in the space of water conservation and reclamation has been built. The application
+	described herein is a submittal for the Samsung MAD Challenge extended IoT hackathon.
+
+	This solution puts in place an architecture that will foster proper wide-spread use of scarce
+	resources, such as water in this application. Once educated on the benefits of conservation, 
+	individuals may team up from within a physically contiguous organization (such as a home or business), 
+	or join forces along other lines of organization, such as 'fantasy conservation teams', or as common 
+	participants in a crowd-funding campaign focused on solving water shortage problems with new devices and services.
+	The possibilities are truly only limited by how any group of people can imagine combining their 
+	efforts with others that are also concerned about water conservation. This approach enables a more 
+	widespread knowledge of the problem, since groups of concerned people influence others to join in
+	the effort of decreasing consumption, whether directly or indirectly. As a result, the solutions
+	and participation will experience a multiplying factor in how effective they can become.
+
+	The methods and scope of this submittal are embodied in a prototype architecture that
+	demonstrates:
+
+		1. Use of policy to enact voluntary water challenge quotas per individual and per organization via
+			operation of smart water flow control and sensing mechanisms built with IoT devices in the main
+			plumbing and water consumption endpoints (e.g., faucet, toilets, showers/bathtubs, dishwashers, and 
+			washing machines). Some of these endpoints are to be monitored yet available for nearly unrestricted 
+			use (certain faucets and toilets) by any individual. Other endpoints provide opportunities for 
+			reduction in consumption. These endpoints include showers/bathtubs and sprinkler systems. Certain endpoints
+			can benefit from being serviced, once filtered, from a reclamation tank (e.g., toilet refill, garden irrigation)
+			Other endpoints such as dishwashers and washing machines provide opportunity for civic contribution 
+			and collaboration, as discussed in more detail in 3. and 4. below.
+
+			The challenge quotas are intended to be achievable and have progressive levels of rewards 
+			for achieving/over-achieving. These rewards can include: social recognition, automatically
+			enacted policy-based financial benefits, gift cards, unlocking of entertainment options, etc.
+			As a result, tracking progress to the challenge goals could provide benefits in other external
+			systems/communities, as well as provide benefits from directly within a smart home setting (i.e., entertainment
+			options). Example of benefits from external communities are: access to online or venue-based experiences with 
+			celebrities of note, either in an exclusive group setting, or as part of a contest one is allowed to
+			enter based on conservation patterns.
+
+			The important point it that claiming rewards results in transfer of value of conserving water into 
+			economies that are personally important to each individual. Many possibilities could be created given
+			proper agreements and technical integrations are in place.
+
+		2. Use of data to:
+			a. enhance an individual's understanding of the broader impact of consumption patterns
+			b. provide understanding of the impact of equipment upgrades and purchase of, for example,
+			reclamation systems
+
+		3. Incorporation of civic sensitivity. At times of water shortage, civic response through prioritization
+			of the use of scarse water resources is essential. Therefore, the solution enables an organization to
+			mark some water consumption endpoints as pre-emptable if a higher predetermined civic need, or
+			category of needs is identified. Some example civic needs include: providing water to firefighters
+			battling to preserve homes and lives during a wildfire, and providing irrigation water to
+			a local little-league ballfield. Examples of pre-emptable water consumption endpoints include:
+			sprinkler systems, dishwashers and washing machines. Dishwashers and washing machine pre-emption
+			would be most useful to address a period of acute short-term shortage by delaying or cancelling for
+			a period of time during which loss of those capabilities could be offset with extra clean dishes and
+			clothing.
+
+		4. Incorporation of collaboration features. The water consumption endpoints are able to track use to the level
+			of an individual. This enables, for example, two individuals to collaborate on a task that will result
+			in water consumption while gaining additional rewards that reinforce this collaborative effort. Collaboration,
+			though it does not result in immediate water conservation, does result in a shift in mindset toward water
+			conservation by attaching a reward to a task that will consume water. This makes chores more bearable
+			for the children in a home while teaching them about the civic duty of conservation at a potentially early age.
+
+	One ARTIK10 development board is used to enable all of the functionality above.
+
+	Though the current application of the architecture described herein is
+	targeted at water conservation and reclamation, the architecture is built
+	to enable generalization of the solution domain to include applications
+	that are distinct from water conservation and reclamation. Inversion of
+	users and devices is considered up front in the design as well.
+
+=====
+
+Architectural description:
+
+	The IoT system architecture, as tailored for this application, is comprised of:
+
+		1. A physical water flow system that serves as:
+			a. A scaled model representation of a physically larger water flow system 
+			in an organization. The physically larger system would likely also 
+			contain more IoT devices than the scaled model. These additional devices are
+			emulated (see 2. below)
+
+		2. Water flow devices emulated in server software to augment the limited number of physical devices
+			that could be feasibly controlled and monitored given limited development board resources
+			a. Augmenting the physical system of one organization and fully emulating an
+				relatively arbitrary number of completely virtual systems enables visualization
+				of the behavior of a collection of organizations, all operating with different system
+				composition, policies, usage patterns and rewards structures, yet participate in common civic 
+				conservation efforts and have individuals that connect across organizations for shared
+				reward interests.
+
+		3. An ARTIK10 IoT development board, responsible for all of the following:
+			a. Monitoring and/or control of water flow to points of consumption in an organization modeled by a 
+				combination of the systems of 1. and 2.
+			b. Providing the emulation features of 2., including all pertinent behavioral modeling (described
+				below - TBD)
+			c. Providing APIs to hybrid mobile applications and a dashboard (described below - TBD) and enabling, broadly:
+				 i. hybrid mobile application API:
+				 	- interacts with requests for water usage for users ('initiators') in the organization when those 
+				 		users are known to be present within the boundary of the organization;
+					- for those with administrative priviledges, provides administrative functions for modification of, 
+						for example, operation of the water system, quotas, and rewards.
+				ii. emulation control dashboard: for all aspects of control of the emulation (described below - TBD) 
+					(i.e., set initial conditions, change condition setpoints, start, pause, stop the emulation, 
+					inject civic actions that could pre-empt a device)
+			d. Hosting a local replica of a database that provides:
+				  	i. Data structures for initiators (users) that provide (Dave, please fill in):
+				  	-
+				  	-
+				  	-
+				  ii. Data structures for providers (water consumption devices (endpoints)) that provide
+				 		(Dave, please fill in):
+				 	-
+				 	-
+				 	-
+				 iii. Data structures for quotas (Dave, please fill in):
+				  iv. Data structures for rewards (Dave, please fill in):
+				   v. Data structures for ... (Dave, please fill in):
+
+
+Hybrid mobile app functional and use-case description and description of API:
+
+	The hybrid mobile app has three non-admin tabs with functionality as described:
+		1. Request
+			a. Provides a listing of the water devices in the organization
+			b. Enables user to request and operate the water device of choice, subject
+				to the policy (including civic preemption)
+			c. Enables user to see the current state of each water device, including
+				  i. on/off
+				 ii. reason why not permissive if non-permissive
+				iii. who is using and length of time in use
+				 iv. civic feature inhibit enabled or not
+			d. Enables user to query usage statistics for last k uses
+			e. Enables user to view total usage relative to quota
+		2. Schedule/negotiate/social
+			a. Provides a location where two users may collaborate to obtain additional rewards
+				consistent with the collaboration reward aspect of the policy
+			b. Provides an interface from which users can pair across social networks with
+				those who also value conservation
+			c. Provides an interface for seeing how well one is contributing as a 'player'
+				on a fantasy conservation league team
+		3. Quota/Reward
+			a. Provides a listing of the current selected rewards and progress toward
+				obtaining them
+			b. Enables changing the rewards to other reward types that the user has saved
+			c. Provides a rollup view of progress relative to quotas and enables the transferral
+				of quota across devices to ensure flexibility in achieving the overall quota
+			d. Provides tips on how to meet the quota if the user is nearing the total quota
+
+	Use cases are as follows:
+		1. Single person use case
+			a. If user is present in organization, then user selects the device thereby exposing
+				functions associated with it
+			b. User then either:
+				  i. checks status and decides to use the device later
+				 ii. checks status and decides to check quota (if not an unrestricted use water consumption
+				 		endpoint) and then request and use
+				iii. checks status, checks quota, shifts quotas among devices and then requests and uses
+				 iv. checks status, checks quota, shifts quotas among devices, changes rewards and then requests and uses
+			c. While in use, consumption logs are maintained based on the flow through the device as measured
+				by the water flow meters
+			d. When use is complete, the state and user of the device are updated to all of the hybrid mobile
+				applications, and usage is updated in the database, thereby updating all of the views the user might
+				see after use. Usage only accumulates over the ON to OFF command window, for simplicity
+		
+		2. Collaboration use case
+			a. If device to operate is not a personal use device and user would like to gain additional rewards, user
+				may use the functionality on this tab to collaborate. This assumes, of course, that the user is present
+				in the organization
+			b. User identifies device and confirms it should be operated and is currently off
+			c. User identifies a collaborator
+			d. User sends a message outside the hybrid mobile app to other party asking if they wish to collaborate.
+			e. When a collaborator is selected, each person must initiate the use of the water device to turn it on
+			f. Once running, the consumption counts toward to organiational quota for that device and the total quota
+
+		3. Civic feature use case
+			a. This feature can pre-empt either the single person or collaboration use case
+			b. When a device is pre-empted, it will not become permissive and will display a message indicating that
+				a civic override is in place
+
+		4. Admin use case
+			a. If the user is an adminstrator, they can, for any other user that is not an administrator:
+				   i. Change quota
+				  ii. View usage statistics that the user can see
+				 iii. Shut off a device
+				  iv. Toggle civic feature and change events that enable civic feature inhibit
+
+
+=====================================================================================================================
+
+Dave,
+
+NOTE: All of the above is quite accurate and complete. However, the API calls to support the above are NOT complete
+		Therefore, any ideas for the format or the composition of the APIs to achieve the above functionality are
+		needed. Please craft the API calls as you see fit to achieve the above. This will allow me to work on interfacing
+		to the physical system.
+
+	The hybrid mobile applicaton API calls could be of the format field1:field2:field3:field4:field5. I made the following
+	mappings as an example and began the definition of some simple APIs:
+
+	field1: user1		(used for single user and collaboration use cases)
+	field2: user2		(used only for collaboration use cases and otherwise 'nil')
+	field3: device		(used for all commands and status)
+	field4: action		(used for all commands)
+	field5: metadata	(used as an optional augmenting field when fields 1-4 are insufficient for what is needed)
+
+		1. Request tab
+			a. user1:nil:device:getState:nil
+				returns the state of the device to the hybrid mobile application
+			b. [user1:nil:device:requestOperation:nil | user1:user2:device:requestOperation:nil]
+
+			c. [user1:nil:device:On:nil | user1:user2:device:On:nil]
+			d. [user1:nil:device:Off:nil | user1:user2:device:Off:nil]
+		2. Schedule/negotiate/social tab
+			a. user1:nil:device:ChoseCollaborator:nil
+			b. user1:nil:device:ChoseCollaborator:nil
+		3. Quota/Reward tab
+
+
+
+
+
+
+

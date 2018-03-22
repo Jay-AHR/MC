@@ -1,0 +1,34 @@
+{
+"411Key":  "MasterBath" ,
+"IDKey":  "shower" ,
+"additionalCapabilitiesKey": [ ],
+"id":  "8a406558-3979-4d67-bb11-e6bfb517db6e" ,
+"stateKey":  "disengaged" ,
+"tagKey":  "0"
+} {
+"411Key":  "Kitchen" ,
+"IDKey":  "sink" ,
+"additionalCapabilitiesKey": [ ],
+"id":  "563e1898-38e8-4b53-8302-112f948cdc54" ,
+"stateKey":  "disengaged" ,
+"tagKey":  "1"
+} {
+"411Key":  "Outside" ,
+"IDKey":  "sprinkler" ,
+"additionalCapabilitiesKey": [
+"civic"
+] ,
+"id":  "f261ce7c-0250-402b-9a51-54e92da134a9" ,
+"stateKey":  "disengaged" ,
+"tagKey":  "3"
+} {
+"411Key":  "Kitchen" ,
+"IDKey":  "dishwasher" ,
+"additionalCapabilitiesKey": [
+"collaborative" ,
+"civic"
+] ,
+"id":  "cd760aed-cf0d-415f-a9db-e63306d0d109" ,
+"stateKey":  "disengaged" ,
+"tagKey":  "2"
+}
